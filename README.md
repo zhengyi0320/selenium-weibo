@@ -44,6 +44,7 @@ def login_weibo():
 			login.click()	
 			time.sleep(1)
 			login_page = driver.page_source
+			#判断验证码输入是否正确
 			yes_no = re.compile('span node-type="text">(.*?)</span>', re.S)
 			code_yes_no = re.search(yes_no, login_page)
 			if not code_yes_no:
@@ -54,8 +55,4 @@ def login_weibo():
 		print('不需要验证码')
 	
 	driver.close()
-	
-	
 
-if __name__ == '__main__':
-	login_weibo()
